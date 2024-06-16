@@ -96,6 +96,8 @@ final class Auth0 implements Auth0Interface
         $this->deferStateSaving();
 
         $params = $params ?? [];
+
+        // comment where the modifications are needed
         $state = $params['state'] ?? $this->getTransientStore()->issue('state');
         $params['nonce'] = $params['nonce'] ?? $this->getTransientStore()->issue('nonce');
         $params['max_age'] = $params['max_age'] ?? $this->configuration()->getTokenMaxAge();
