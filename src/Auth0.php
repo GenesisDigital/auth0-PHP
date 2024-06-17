@@ -103,6 +103,7 @@ final class Auth0 implements Auth0Interface
         $params['max_age'] = $params['max_age'] ?? $this->configuration()->getTokenMaxAge();
 
         unset($params['state']);
+        $this->getTransientStore()->store('state', $state);
 
         if ($this->configuration()->getUsePkce()) {
             $codeVerifier = PKCE::generateCodeVerifier(128);
